@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import styles from './Editor.module.css';
 
+// alernative implementation of the Editor component
 export const Editor = () => {
 	const [editor, setEditor] = useState<monaco.editor.IStandaloneCodeEditor | null>(null);
 	const monacoEl = useRef(null);

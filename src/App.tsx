@@ -1,12 +1,15 @@
 import { useRef } from 'react';
-import { type Monaco } from '@monaco-editor/react';
-import { Editor} from './components/Editor';
+import Editor, { type Monaco } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import EditorStyles from './components/Editor.module.css';
 
 function App() {
-  const editorRef = useRef(null);
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
 
-  function handleEditorDidMount(editor: monaco, _monaco: Monaco) {
+  function handleEditorDidMount(
+    editor: monaco.editor.IStandaloneCodeEditor,
+    _monaco: Monaco
+  ) {
     editorRef.current = editor;
   }
 
@@ -18,13 +21,13 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className={EditorStyles.Editor}>
         <button onClick={showValue}>Show value</button>
         <Editor
-          // height='90vh'
-          // defaultLanguage='javascript'
-          // defaultValue='// some comment'
-          // onMount={handleEditorDidMount}
+          height='90vh'
+          defaultLanguage='javascript'
+          defaultValue='// some comment'
+          onMount={handleEditorDidMount}
         />
       </div>
     </>
