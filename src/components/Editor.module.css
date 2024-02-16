@@ -2,3 +2,9 @@
 	width: 100vw;
 	height: 100vh;
 }
+
+/* disable intellisense */
+.monaco-editor .editor-widget {
+  display: none !important;
+  visibility: hidden !important;
+}
