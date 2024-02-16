@@ -4,7 +4,11 @@ import styles from './Editor.module.css';
 import { EditorProps } from '@monaco-editor/react';
 
 // alernative implementation of the Editor component
-export const Editor = (props: EditorProps) => {
+export const Editor = ({
+  value,
+  language,
+  ...props
+}: EditorProps & { value: string; language: string }) => {
   const [editor, setEditor] =
     useState<monaco.editor.IStandaloneCodeEditor | null>(null);
   const monacoEl = useRef(null);
@@ -16,10 +20,12 @@ export const Editor = (props: EditorProps) => {
 
         return monaco.editor.create(monacoEl.current!, {
           ...props,
-          value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join(
-            '\n'
-          ),
-          language: 'typescript',
+          value:
+            value ||
+            ['function x() {', '\tconsole.log("Hello world!");', '}'].join(
+              '\n'
+            ),
+          language: language || 'typescript',
         });
       });
     }
@@ -27,10 +33,5 @@ export const Editor = (props: EditorProps) => {
     return () => editor?.dispose();
   }, [monacoEl.current]);
 
-  return (
-    <div
-      className={styles.Editor}
-      ref={monacoEl}
-    />
-  );
+  return <div className={styles.Editor} ref={monacoEl} />;
 };

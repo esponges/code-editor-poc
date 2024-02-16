@@ -66,3 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.monaco-editor .editor-widget {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.editor {
+	width: 100vw;
+	height: 100vh;
+}

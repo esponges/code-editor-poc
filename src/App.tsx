@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import Editor, { type Monaco } from '@monaco-editor/react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-import EditorStyles from './components/Editor.module.css';
 
 function App() {
   const [language, setLanguage] = useState('typescript');
@@ -22,7 +21,7 @@ function App() {
 
   return (
     <>
-      <div className={EditorStyles.Editor}>
+      <div className='editor'>
         <button onClick={showValue}>Show value</button>
         <select value={language} onChange={(e) => setLanguage(e.target.value)}>
           <option value='javascript'>JavaScript</option>
